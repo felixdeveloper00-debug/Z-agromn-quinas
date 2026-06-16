@@ -1,227 +1,374 @@
-import streamlit as st
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZÉ AGROMÁQUINAS</title>
 
-# =========================
-# CONFIGURAÇÃO DA PÁGINA
-# =========================
-
-st.set_page_config(
-    page_title="ZÉ AGROMÁQUINAS",
-    page_icon="🌽",
-    layout="wide"
-)
-
-# =========================
-# ESTILO
-# =========================
-
-st.markdown("""
 <style>
-
-.main {
-    background-color: #ffffff;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.titulo {
-    text-align:center;
-    font-size:75px;
-    font-weight:900;
-    color:#2E7D32;
-    margin-bottom:0px;
+body {
+    background: #f5f2e9;
+    color: #333;
 }
 
-.subtitulo {
-    text-align:center;
-    font-size:38px;
-    color:#C9A227;
-    font-style:italic;
-    margin-top:-20px;
-    margin-bottom:25px;
+header {
+    background: #1b5e20;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px #0004;
 }
 
-.produtos {
-    text-align:center;
-    font-size:28px;
-    font-weight:bold;
-    color:#444;
+nav {
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
 }
 
-.rodape {
-    text-align:center;
-    color:gray;
-    margin-top:40px;
+.logo {
+    color: #ffc107;
+    font-size: 28px;
+    font-weight: bold;
 }
 
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.banner {
+    height: 90vh;
+    background: linear-gradient(#0008,#0008), url("banner.jpg");
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.banner h1 {
+    font-size: 60px;
+}
+
+.banner p {
+    color: #ffc107;
+    font-size: 26px;
+}
+
+section {
+    max-width: 1200px;
+    margin: auto;
+    padding: 80px 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #1b5e20;
+    margin-bottom: 30px;
+    font-size: 38px;
+}
+
+.texto {
+    text-align: center;
+    line-height: 1.8;
+    font-size: 18px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px #0003;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.card div {
+    padding: 20px;
+}
+
+.card h3 {
+    color: #1b5e20;
+    margin-bottom: 10px;
+}
+
+.botao {
+    background: #2e7d32;
+    color: white;
+    padding: 12px 25px;
+    display: inline-block;
+    border-radius: 30px;
+    text-decoration: none;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.contato {
+    text-align: center;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    border: 1px solid #aaa;
+}
+
+form {
+    max-width: 600px;
+    margin: auto;
+}
+
+footer {
+    background: #1b5e20;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.whatsapp {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #25d366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    font-size: 30px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 60px;
+    text-decoration: none;
+}
+
+@media(max-width:700px){
+    nav {
+        flex-direction: column;
+    }
+
+    nav ul {
+        margin-top: 10px;
+        gap: 12px;
+    }
+
+    .banner h1 {
+        font-size: 38px;
+    }
+
+    .banner p {
+        font-size: 20px;
+    }
+}
 </style>
-""", unsafe_allow_html=True)
 
-# =========================
-# BANNER
-# =========================
+</head>
 
-st.image("banner.png", use_container_width=True)
+<body>
 
-# =========================
-# TÍTULO
-# =========================
+<header>
+<nav>
+<div class="logo">🌽 ZÉ AGROMÁQUINAS</div>
 
-st.markdown("""
-<div class="titulo">
-ZÉ AGROMÁQUINAS
+<ul>
+<li><a href="#quem">Quem Somos</a></li>
+<li><a href="#servicos">Serviços</a></li>
+<li><a href="#produtos">Produtos</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+
+</nav>
+</header>
+
+
+<div class="banner">
+<div>
+<h1>ZÉ AGROMÁQUINAS</h1>
+<p>Há mais de 40 anos cultivando confiança</p>
 </div>
-""", unsafe_allow_html=True)
-
-st.markdown("""
-<div class="subtitulo">
-Há mais de 40 anos cultivando confiança
 </div>
-""", unsafe_allow_html=True)
 
-# =========================
-# PRODUTOS PRINCIPAIS
-# =========================
 
-st.markdown("""
-<div class="produtos">
-🌽 Silagem de Milho &nbsp;&nbsp;&nbsp; • &nbsp;&nbsp;&nbsp; 🌾 Milho a Granel
+<section id="quem">
+<h2>Quem Somos</h2>
+
+<p class="texto">
+A ZÉ AGROMÁQUINAS é uma empresa tradicional de Aragoiânia-GO,
+com mais de quatro décadas atendendo produtores rurais com
+compromisso, qualidade e confiança.
+Nossa missão é oferecer produtos agrícolas de excelência e
+um atendimento próximo ao homem do campo.
+</p>
+
+</section>
+
+
+<section id="servicos">
+
+<h2>Nossos Serviços</h2>
+
+<div class="cards">
+
+<div class="card">
+<div>
+<h3>🚜 Produção de Silagem</h3>
+<p>Produção de silagem de alta qualidade para alimentação de bovinos de corte e leite.</p>
 </div>
-""", unsafe_allow_html=True)
+</div>
 
-st.write("")
-st.write("")
+<div class="card">
+<div>
+<h3>🌾 Venda de Milho</h3>
+<p>Fornecimento de milho a granel selecionado para diversas necessidades rurais.</p>
+</div>
+</div>
 
-# =========================
-# BOTÕES
-# =========================
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.link_button(
-        "📱 Solicitar Orçamento no WhatsApp",
-        "https://wa.me/556299517635"
-    )
-
-with col2:
-    st.link_button(
-        "📸 Instagram",
-        "https://www.instagram.com/ze_agromaquinas"
-    )
-
-st.divider()
-
-# =========================
-# QUEM SOMOS
-# =========================
-
-st.header("Quem Somos")
-
-st.write("""
-A ZÉ AGROMÁQUINAS atua há mais de 40 anos atendendo produtores rurais
-de Aragoiânia e toda a região.
-
-Trabalhamos com silagem de milho e milho a granel,
-oferecendo qualidade, confiança e compromisso com nossos clientes.
-
-Nosso objetivo é fornecer produtos de excelência para auxiliar
-o produtor rural em suas atividades diárias.
-""")
-
-st.divider()
-
-# =========================
-# GALERIA DE PRODUTOS
-# =========================
-
-st.header("Nossos Produtos")
-
-col1, col2 = st.columns(2)
-
-with col1:
-    st.image("silagem.jpg", use_container_width=True)
-    st.subheader("🌽 Silagem de Milho")
-
-    st.write("""
-    Silagem de alta qualidade,
-    produzida para garantir excelente desempenho nutricional
-    para bovinos de corte e leite.
-    """)
-
-with col2:
-    st.image("milho.jpg", use_container_width=True)
-    st.subheader("🌾 Milho a Granel")
-
-    st.write("""
-    Milho selecionado e armazenado adequadamente,
-    ideal para alimentação animal e diversas aplicações rurais.
-    """)
-
-st.divider()
-
-# =========================
-# CONTATO
-# =========================
-import urllib.parse
-
-st.header("📋 Solicite seu orçamento")
-
-nome = st.text_input("Nome")
-
-telefone = st.text_input("Telefone")
-
-produto = st.selectbox(
-    "Produto",
-    [
-        "Silagem de Milho",
-        "Milho a Granel"
-    ]
-)
-
-quantidade = st.text_input("Quantidade desejada")
-
-cidade = st.text_input("Cidade")
-
-if st.button("📱 Enviar para WhatsApp"):
-
-    mensagem = f"""
-🌽 NOVO ORÇAMENTO - ZÉ AGROMÁQUINAS
-
-👤 Nome: {nome}
-
-📞 Telefone: {telefone}
-
-📍 Cidade: {cidade}
-
-📦 Produto: {produto}
-
-⚖️ Quantidade: {quantidade}
-"""
-
-    mensagem = urllib.parse.quote(mensagem)
-
-    link = (
-        f"https://wa.me/556299517635?text={mensagem}"
-    )
-
-    st.link_button(
-        "Clique aqui para abrir o WhatsApp",
-        link
-    )
-# =========================
-# RODAPÉ
-# =========================
-
-st.markdown("""
-<div class="rodape">
-
-📍 Aragoiânia - GO
-
-🚜 Atendimento em toda a região
-
-📞 (62) 99517-635
-
-📸 @ze_agromaquinas
-
-🌽 ZÉ AGROMÁQUINAS
+<div class="card">
+<div>
+<h3>🚚 Entrega na Região</h3>
+<p>Atendimento rápido e entrega aos produtores rurais de toda a região.</p>
+</div>
+</div>
 
 </div>
-""", unsafe_allow_html=True)
+
+</section>
+
+
+<section id="produtos">
+
+<h2>Nossos Produtos</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<img src="silagem.jpg" alt="Silagem">
+
+<div>
+<h3>🌽 Silagem de Milho</h3>
+
+<p>
+Silagem produzida com alto padrão de qualidade,
+garantindo melhor nutrição e desempenho do rebanho.
+</p>
+
+<a class="botao" href="https://wa.me/556299517635">
+Solicitar orçamento
+</a>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<img src="milho.jpg" alt="Milho">
+
+<div>
+
+<h3>🌾 Milho a Granel</h3>
+
+<p>
+Milho selecionado e armazenado corretamente para oferecer qualidade ao produtor.
+</p>
+
+<a class="botao" href="https://wa.me/556299517635">
+Solicitar orçamento
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section id="contato">
+
+<h2>Entre em Contato</h2>
+
+<div class="contato">
+
+<p><strong>📍 Aragoiânia - GO</strong></p>
+<p><strong>📞 WhatsApp:</strong> (62) 99517-635</p>
+<p><strong>📸 Instagram:</strong> @ze_agromaquinas</p>
+
+<br>
+
+<form>
+
+<input type="text" placeholder="Seu nome">
+
+<input type="tel" placeholder="Telefone">
+
+<textarea rows="5" placeholder="Digite sua mensagem"></textarea>
+
+<a class="botao" href="https://wa.me/556299517635">
+Enviar pelo WhatsApp
+</a>
+
+</form>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<h3>🌽 ZÉ AGROMÁQUINAS</h3>
+
+<p>
+Há mais de 40 anos cultivando confiança no campo.
+</p>
+
+<p>
+Atendemos Aragoiânia e toda a região.
+</p>
+
+</footer>
+
+
+<a class="whatsapp"
+href="https://wa.me/556299517635">
+📱
+</a>
+
+
+</body>
+
+</html>
