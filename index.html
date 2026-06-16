@@ -3,145 +3,705 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>ZÉ AGROMÁQUINAS</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,Helvetica,sans-serif;background:#f5f2e9;color:#333}
-header{position:fixed;top:0;width:100%;background:#1b5e20;z-index:1000}
-nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:15px}
-.logo{color:#ffc107;font-size:28px;font-weight:bold}
-nav ul{display:flex;gap:20px;list-style:none}
-nav a{color:#fff;text-decoration:none}
-.slider{height:100vh;position:relative;overflow:hidden}
-.slide{position:absolute;inset:0;opacity:0;transition:1s}
-.slide.active{opacity:1}
-.slide img{width:100%;height:100%;object-fit:cover}
-.overlay{position:absolute;inset:0;background:rgba(0,0,0,.5);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;color:#fff;padding:20px}
-.overlay h1{font-size:clamp(42px,8vw,90px)}
-.overlay p{font-size:clamp(18px,3vw,32px);color:#ffc107}
-.btn{background:#ffc107;color:#1b5e20;padding:14px 30px;border-radius:30px;text-decoration:none;font-weight:bold;margin-top:20px}
-section{max-width:1200px;margin:auto;padding:80px 20px}
-h2{text-align:center;color:#1b5e20;margin-bottom:25px}
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px}
-.card{background:#fff;border-radius:15px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.15)}
-.card img{width:100%;height:230px;object-fit:cover}
-.card div{padding:20px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
-.stat{background:#fff;padding:20px;border-radius:12px}
-form{max-width:700px;margin:auto}
-input,select,textarea{width:100%;padding:12px;margin:8px 0}
-footer{background:#1b5e20;color:#fff;text-align:center;padding:30px}
-.whatsapp{position:fixed;right:20px;bottom:20px;background:#25d366;color:#fff;text-decoration:none;width:65px;height:65px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px}
-@media(max-width:700px){nav{flex-direction:column}.stats{grid-template-columns:1fr}}
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#0f1115;
+    color:white;
+}
+
+/* =========================
+   MENU
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+
+    background:rgba(15,17,21,.95);
+
+    border-bottom:1px solid #222;
+}
+
+nav{
+    max-width:1200px;
+    margin:auto;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 25px;
+}
+
+.logo{
+    color:#ffc107;
+    font-size:28px;
+    font-weight:bold;
+}
+
+.menu{
+    display:flex;
+    gap:25px;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.menu a:hover{
+    color:#ffc107;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    height:100vh;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+
+    background:rgba(0,0,0,.60);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:20px;
+}
+
+.hero h1{
+    font-size:clamp(50px,8vw,95px);
+    color:#ffc107;
+}
+
+.hero p{
+    font-size:clamp(18px,3vw,30px);
+    margin-top:15px;
+}
+
+.hero-btn{
+    margin-top:25px;
+
+    background:#ffc107;
+    color:#111;
+
+    padding:15px 35px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.hero-btn:hover{
+    transform:scale(1.05);
+}
+
+/* =========================
+   SEÇÕES
+========================= */
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:90px 20px;
+}
+
+.titulo{
+    text-align:center;
+    color:#ffc107;
+    margin-bottom:40px;
+    font-size:40px;
+}
+
+.texto{
+    text-align:center;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* =========================
+   NÚMEROS
+========================= */
+
+.numeros{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.numero{
+    background:#1a1f28;
+    border-radius:15px;
+
+    padding:35px;
+
+    text-align:center;
+}
+
+.numero h3{
+    color:#ffc107;
+    font-size:45px;
+}
+
+.numero p{
+    margin-top:10px;
+}
+
+/* =========================
+   PRODUTOS
+========================= */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#1a1f28;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:25px;
+}
+
+.card h3{
+    color:#ffc107;
+    margin-bottom:10px;
+}
+
+.card p{
+    line-height:1.7;
+}
+
+.btn-card{
+    display:inline-block;
+
+    margin-top:20px;
+
+    background:#25d366;
+    color:white;
+
+    text-decoration:none;
+
+    padding:12px 25px;
+
+    border-radius:30px;
+
+    font-weight:bold;
+}
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+.form-box{
+    max-width:800px;
+    margin:auto;
+
+    background:#1a1f28;
+
+    padding:30px;
+
+    border-radius:15px;
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    padding:15px;
+
+    margin:10px 0;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2a303c;
+
+    color:white;
+
+    font-size:16px;
+}
+
+textarea{
+    resize:none;
+}
+
+button{
+    width:100%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#25d366;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+
+footer{
+    background:#090b0e;
+
+    padding:50px 20px;
+
+    text-align:center;
+}
+
+footer h3{
+    color:#ffc107;
+    margin-bottom:15px;
+}
+
+footer p{
+    margin-top:8px;
+}
+
+/* =========================
+   WHATSAPP FIXO
+========================= */
+
+.whatsapp{
+
+    position:fixed;
+
+    right:20px;
+
+    bottom:20px;
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:#25d366;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
+
+    font-size:32px;
+
+    box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .menu{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    .titulo{
+        font-size:32px;
+    }
+}
+
 </style>
 </head>
+
 <body>
 
 <header>
+
 <nav>
-<div class="logo">🌽 ZÉ AGROMÁQUINAS</div>
-<ul>
-<li><a href="#quem">Quem Somos</a></li>
-<li><a href="#produtos">Produtos</a></li>
-<li><a href="#contato">Contato</a></li>
-</ul>
+
+<div class="logo">
+🌽 ZÉ AGROMÁQUINAS
+</div>
+
+<div class="menu">
+
+<a href="#quem-somos">Quem Somos</a>
+
+<a href="#produtos">Produtos</a>
+
+<a href="#orcamento">Orçamento</a>
+
+<a href="#contato">Contato</a>
+
+</div>
+
 </nav>
+
 </header>
 
-<section class="slider">
-<div class="slide active"><img src="banner1.jpg"></div>
-<div class="slide"><img src="banner2.jpg"></div>
-<div class="slide"><img src="banner3.jpg"></div>
+<section class="hero">
 
-<div class="overlay">
+<img src="banner3.jpg">
+
+<div class="hero-overlay">
+
 <h1>ZÉ AGROMÁQUINAS</h1>
-<p>Há mais de 40 anos cultivando confiança</p>
-<a class="btn" href="https://wa.me/556299517635">Solicitar orçamento</a>
+
+<p>
+Há mais de 40 anos cultivando confiança
+</p>
+
+<p>
+🌽 Silagem de Milho • 🌾 Milho a Granel
+</p>
+
+<a
+href="#orcamento"
+class="hero-btn">
+
+📱 Solicitar Orçamento
+
+</a>
+
 </div>
+
 </section>
 
-<section id="quem">
-<h2>Quem Somos</h2>
-<p style="text-align:center">Atendendo Aragoiânia e região com silagem de milho e milho a granel.</p>
+<section id="quem-somos">
+
+<h2 class="titulo">
+Quem Somos
+</h2>
+
+<p class="texto">
+
+A ZÉ AGROMÁQUINAS atende Aragoiânia e toda a região há mais de
+40 anos.
+
+Fornecemos silagem de milho e milho a granel com qualidade,
+compromisso e confiança para produtores rurais.
+
+</p>
+
 </section>
 
 <section>
-<div class="stats">
-<div class="stat"><h3>+40 anos</h3><p>Experiência</p></div>
-<div class="stat"><h3>100%</h3><p>Foco no produtor</p></div>
-<div class="stat"><h3>Regional</h3><p>Atendimento rápido</p></div>
+
+<div class="numeros">
+
+<div class="numero">
+
+<h3>40+</h3>
+
+<p>
+Anos de experiência
+</p>
+
 </div>
+
+<div class="numero">
+
+<h3>100%</h3>
+
+<p>
+Foco no produtor rural
+</p>
+
+</div>
+
+<div class="numero">
+
+<h3>🚚</h3>
+
+<p>
+Atendimento regional
+</p>
+
+</div>
+
+</div>
+
 </section>
 
 <section id="produtos">
-<h2>Produtos</h2>
+
+<h2 class="titulo">
+Nossos Produtos
+</h2>
+
 <div class="cards">
+
 <div class="card">
+
 <img src="silagem.jpg">
-<div>
-<h3>🌽 Silagem de Milho</h3>
-<p>Silagem de qualidade para alimentação animal.</p>
+
+<div class="card-content">
+
+<h3>
+🌽 Silagem de Milho
+</h3>
+
+<p>
+
+Silagem produzida com qualidade para melhor
+desempenho e alimentação do rebanho.
+
+</p>
+
+<a
+class="btn-card"
+href="https://wa.me/556299517635">
+
+Solicitar Orçamento
+
+</a>
+
 </div>
+
 </div>
+
 <div class="card">
+
 <img src="milho.jpg">
-<div>
-<h3>🌾 Milho a Granel</h3>
-<p>Milho selecionado para produtores rurais.</p>
+
+<div class="card-content">
+
+<h3>
+🌾 Milho a Granel
+</h3>
+
+<p>
+
+Milho selecionado para atender as necessidades
+do produtor rural.
+
+</p>
+
+<a
+class="btn-card"
+href="https://wa.me/556299517635">
+
+Solicitar Orçamento
+
+</a>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
 
-<section id="contato">
-<h2>Solicite seu orçamento</h2>
-<form>
-<input id="nome" placeholder="Nome">
-<input id="telefone" placeholder="Telefone">
+<section id="orcamento">
+
+<h2 class="titulo">
+Solicite seu Orçamento
+</h2>
+
+<div class="form-box">
+
+<input
+id="nome"
+placeholder="Seu nome">
+
+<input
+id="telefone"
+placeholder="Telefone">
+
+<input
+id="cidade"
+placeholder="Cidade">
+
 <select id="produto">
-<option>Silagem de Milho</option>
-<option>Milho a Granel</option>
+
+<option>
+Silagem de Milho
+</option>
+
+<option>
+Milho a Granel
+</option>
+
 </select>
-<textarea id="mensagem" rows="5" placeholder="Mensagem"></textarea>
-<a class="btn" href="#" onclick="enviarWhats();return false;">Enviar pelo WhatsApp</a>
-</form>
+
+<input
+id="quantidade"
+placeholder="Quantidade">
+
+<textarea
+id="obs"
+rows="5"
+placeholder="Observações">
+</textarea>
+
+<button onclick="enviarWhats()">
+
+📱 Enviar pelo WhatsApp
+
+</button>
+
+</div>
+
 </section>
 
-<footer>
-<h3>ZÉ AGROMÁQUINAS</h3>
-<p>Aragoiânia - GO</p>
-<p>(62) 99517-635</p>
-<p>@ze_agromaquinas</p>
+<footer id="contato">
+
+<h3>
+🌽 ZÉ AGROMÁQUINAS
+</h3>
+
+<p>
+📍 Aragoiânia - GO
+</p>
+
+<p>
+📞 (62) 99517-635
+</p>
+
+<p>
+📸 @ze_agromaquinas
+</p>
+
+<p>
+Há mais de 40 anos cultivando confiança.
+</p>
+
 </footer>
 
-<a class="whatsapp" href="https://wa.me/556299517635">📱</a>
+<a
+class="whatsapp"
+href="https://wa.me/556299517635">
+
+📱
+
+</a>
 
 <script>
-let slides=document.querySelectorAll('.slide');
-let atual=0;
-setInterval(()=>{
-slides[atual].classList.remove('active');
-atual=(atual+1)%slides.length;
-slides[atual].classList.add('active');
-},4000);
 
 function enviarWhats(){
-let nome=document.getElementById('nome').value;
-let telefone=document.getElementById('telefone').value;
-let produto=document.getElementById('produto').value;
-let mensagem=document.getElementById('mensagem').value;
 
-let texto=`🌽 ORÇAMENTO ZÉ AGROMÁQUINAS
+let nome =
+document.getElementById("nome").value
 
-Nome: ${nome}
-Telefone: ${telefone}
-Produto: ${produto}
+let telefone =
+document.getElementById("telefone").value
 
-Mensagem:
-${mensagem}`;
+let cidade =
+document.getElementById("cidade").value
 
-window.open(`https://wa.me/556299517635?text=${encodeURIComponent(texto)}`,'_blank');
+let produto =
+document.getElementById("produto").value
+
+let quantidade =
+document.getElementById("quantidade").value
+
+let obs =
+document.getElementById("obs").value
+
+let texto =
+
+`🌽 NOVO ORÇAMENTO - ZÉ AGROMÁQUINAS
+
+👤 Nome: ${nome}
+
+📞 Telefone: ${telefone}
+
+📍 Cidade: ${cidade}
+
+📦 Produto: ${produto}
+
+⚖️ Quantidade: ${quantidade}
+
+📝 Observações:
+${obs}`
+
+window.open(
+`https://wa.me/556299517635?text=${encodeURIComponent(texto)}`,
+"_blank"
+)
+
 }
+
 </script>
+
 </body>
 </html>
