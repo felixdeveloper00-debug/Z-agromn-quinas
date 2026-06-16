@@ -160,27 +160,52 @@ st.divider()
 # =========================
 # CONTATO
 # =========================
+import urllib.parse
 
-st.header("Solicite seu orçamento")
+st.header("📋 Solicite seu orçamento")
 
-with st.form("contato"):
+nome = st.text_input("Nome")
 
-    nome = st.text_input("Nome")
+telefone = st.text_input("Telefone")
 
-    telefone = st.text_input("Telefone")
+produto = st.selectbox(
+    "Produto",
+    [
+        "Silagem de Milho",
+        "Milho a Granel"
+    ]
+)
 
-    mensagem = st.text_area(
-        "Mensagem"
+quantidade = st.text_input("Quantidade desejada")
+
+cidade = st.text_input("Cidade")
+
+if st.button("📱 Enviar para WhatsApp"):
+
+    mensagem = f"""
+🌽 NOVO ORÇAMENTO - ZÉ AGROMÁQUINAS
+
+👤 Nome: {nome}
+
+📞 Telefone: {telefone}
+
+📍 Cidade: {cidade}
+
+📦 Produto: {produto}
+
+⚖️ Quantidade: {quantidade}
+"""
+
+    mensagem = urllib.parse.quote(mensagem)
+
+    link = (
+        f"https://wa.me/556299517635?text={mensagem}"
     )
 
-    enviar = st.form_submit_button("Enviar")
-
-    if enviar:
-
-        st.success(
-            "Mensagem registrada! Entre em contato pelo WhatsApp para atendimento imediato."
-        )
-
+    st.link_button(
+        "Clique aqui para abrir o WhatsApp",
+        link
+    )
 # =========================
 # RODAPÉ
 # =========================
